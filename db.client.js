@@ -14,6 +14,12 @@ const sequelize = new Sequelize(
         rejectUnauthorized: false,
       },
     },
+define : {
+
+createAt: 'added',
+updateAt: 'updated',
+  
+}
   },
 );
 
