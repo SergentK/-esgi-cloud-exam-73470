@@ -2,22 +2,26 @@ const { Sequelize } = require('sequelize')
 
 // database
 const sequelize = new Sequelize(
-  'esgi-cloud-exam-db', // TODO
+  'esgi_cloud_exam_db', 
+  'esgi_cloud_exam_db_user', 
+  'WTYOSlOnEOKkkrGx1YDx9yqaUHjt2ozv', 
   {
+    host: 'pD6z91y1p9b6i0motWbmOWug4ggtitIK', 
+    dialect: 'postgres',
     dialectOptions: {
       ssl: {
         require: true,
         rejectUnauthorized: false,
       },
     },
+    define: {
+      createdAt: 'added',
+      updatedAt: 'updated',
+    }
   },
-);
+)
 
-// authentication and synchronization
 sequelize.authenticate()
-  .then(() => {
-    sequelize.sync().catch(() => console.log("Cannot sync the database"));
-  })
-  .catch(() => console.log("Cannot connect to database, please check environment credentials"));
+sequelize.sync()
 
-module.exports = sequelize;
+module.exports = sequelize
